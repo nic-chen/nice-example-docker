@@ -1,0 +1,51 @@
+version: "3.4"
+services:
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /data/www/:/data/www/:rw
+      - ./nginx/:/etc/nginx/:rw
+      - ./log/nginx/:/data/log/nginx/:rw
+    restart: always
+    networks:
+      - net-golang
+
+  golang:
+    build: ./golang
+    expose:
+      - "8090"
+    volumes:
+      - ./log/golang/:/data/log/golang/:rw
+    restart: always
+    networks:
+      - net-golang
+      - net-mysql
+      - net-redis
+
+
+  mysql:
+    build: ./mysql
+    ports:
+      - "3306:3306"
+    restart: always
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    networks:
+      - net-mysql
+
+  redis:
+    image: redis:4.0
+    restart: always
+    ports:
+      - "6379:6379"
+    networks:
+      - net-redis
+
+networks:
+  net-golang:
+  net-mysql:
+  net-redis:
+
