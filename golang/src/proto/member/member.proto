@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+service Member {
+    rpc Info (Request) returns (Response);
+}
+
+message Request {
+    int32 id = 1;
+}
+
+message Response {
+    int32 id = 1;
+    string nickname = 2;
+    string avatar = 3;
+}

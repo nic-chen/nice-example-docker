@@ -1,4 +1,5 @@
 //config
+
 package config
 
 import (
@@ -6,24 +7,36 @@ import (
 )
 
 var (
-	APP_NAME  = "nice";
-	HTTPBIND  = "0.0.0.0:8090"
+	APP_NAME    = "nice"
+	PPROFBIND   = []string{"localhost:2045"}
+	HTTPBIND    = "0.0.0.0:8202"
+	
+	NamingAddr  = "http://127.0.0.1:2379"
+	SrvName     = "member-srv"
+	SrvHost     = "localhost"
+	SrvPort     = "50001"
+	SrvCheckTTL = 30
+	CliName     = "member-cli"
+
+	JaegerAddr  = "jaeger:6831"
+
+	MemberSrvName = SrvName
 )
 
 const (
-	Debug      = true;
+	Debug      = true
 	
-	MYSQLHOST  = "mysql";
-	MYSQLDB    = "test";
-	MYSQLUSER  = "root";
-	MYSQLPWD   = "";
+	MYSQLHOST  = "127.0.0.1"
+	MYSQLDB    = "test"
+	MYSQLUSER  = "root"
+	MYSQLPWD   = ""
 	
-	DBCHARSET  = "utf8";
-	DBCONNOPEN = 100;
-	DBCONNIDLE = 10;
+	DBCHARSET  = "utf8"
+	DBCONNOPEN = 100
+	DBCONNIDLE = 10
 	
-	REDISHOST  = "redis:6379";
-	REDISDB    = 0;
-	REDISPWD   = "";
+	REDISHOST  = "127.0.0.1:6379"
+	REDISDB    = 0
+	REDISPWD   = ""
 
 )
