@@ -177,6 +177,9 @@ func ConvertToInt32(m interface{}) int32 {
 		return int32(m.(int))
 	case float64:
 		return int32(m.(float64))
+	case uint64:
+		return int32(m.(uint64))
+
 	default:
 		return m.(int32)
 	}
