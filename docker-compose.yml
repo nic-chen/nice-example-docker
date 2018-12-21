@@ -13,26 +13,16 @@ services:
     networks:
       - net-golang
 
-  golang:
-    build: ./golang
-    expose:
-      - "8090"
-    volumes:
-      - ./log/golang/:/data/log/golang/:rw
-    restart: always
-    networks:
-      - net-golang
-      - net-mysql
-      - net-redis
-      - net-jaeger
-
   mysql:
     build: ./mysql
     ports:
       - "3306:3306"
+    volumes:
+      - ./mysql.cnf:/etc/mysql/conf.d/mysql.cnf:ro
+      - ./mysql/data/:/var/lib/mysql/:rw
     restart: always
     environment:
-      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_ROOT_PASSWORD: "123456"
     networks:
       - net-mysql
 
@@ -57,9 +47,38 @@ services:
     networks:
       - net-jaeger
 
+  etcd:
+    image: quay.io/coreos/etcd
+    command: etcd --initial-cluster-state new --listen-client-urls http://0.0.0.0:2379 --advertise-client-urls http://127.0.0.1:2379
+    environment:
+      - ETCDCTL_API=3
+    networks:
+      - net-etcd
+
+  golang:
+    build: ./golang
+    expose:
+      - "8090"
+    volumes:
+      - ./log/golang/:/data/log/golang/:rw
+    restart: always
+    depends_on:
+      - "jaeger"
+      - "mysql"
+      - "redis"
+      - "etcd"
+    networks:
+      - net-golang
+      - net-mysql
+      - net-redis
+      - net-jaeger
+      - net-etcd
+
+
 networks:
   net-golang:
   net-mysql:
   net-redis:
   net-jaeger:
+  net-etcd:
 

@@ -11,7 +11,7 @@ var (
 	PPROFBIND   = []string{"localhost:2045"}
 	HTTPBIND    = "0.0.0.0:8202"
 	
-	NamingAddr  = "http://127.0.0.1:2379"
+	NamingAddr  = "http://etcd:2379"
 	SrvName     = "member-srv"
 	SrvHost     = "localhost"
 	SrvPort     = "50001"
@@ -26,16 +26,16 @@ var (
 const (
 	Debug      = true
 	
-	MYSQLHOST  = "127.0.0.1"
+	MYSQLHOST  = "mysql"
 	MYSQLDB    = "test"
 	MYSQLUSER  = "root"
-	MYSQLPWD   = ""
+	MYSQLPWD   = "123456"
 	
 	DBCHARSET  = "utf8"
 	DBCONNOPEN = 100
 	DBCONNIDLE = 10
 	
-	REDISHOST  = "127.0.0.1:6379"
+	REDISHOST  = "redis:6379"
 	REDISDB    = 0
 	REDISPWD   = ""
 
