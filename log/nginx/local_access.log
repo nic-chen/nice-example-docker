@@ -1,2 +1,0 @@
-172.30.0.1 - - [23/Oct/2018:06:39:25 +0000] "GET /member/1 HTTP/1.1" 502 559 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36"
-172.30.0.1 - - [23/Oct/2018:06:44:37 +0000] "GET /member/1 HTTP/1.1" 200 81 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36"
