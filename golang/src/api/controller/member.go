@@ -4,7 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"github.com/nic-chen/nice"
-	"../dao"
+	"../../dao"
 	"../../config"
 
 	proto "../../proto/member"

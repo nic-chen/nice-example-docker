@@ -2,7 +2,7 @@ package membersrv
 
 import (
 	"context"
-	"../../api/dao"
+	"../../dao"
 	"../../proto/member"
 )
 

@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"database/sql"
 	"github.com/nic-chen/nice"
-	"../../config"
+	"../config"
 	"strconv"
 	_ "github.com/go-sql-driver/mysql"
 )
@@ -179,7 +179,7 @@ func ConvertToInt32(m interface{}) int32 {
 		return int32(m.(float64))
 	case uint64:
 		return int32(m.(uint64))
-
+		
 	default:
 		return m.(int32)
 	}
